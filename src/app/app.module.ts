@@ -8,6 +8,8 @@ import { ContentComponent } from './content/content.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { FoodcallComponent } from './foodcall/foodcall.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { HomeComponent } from './home/home.component';
     NavComponent,
     ContentComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    FoodcallComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
