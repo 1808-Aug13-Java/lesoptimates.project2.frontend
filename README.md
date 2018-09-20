@@ -1,3 +1,5 @@
-#how to run
+# how to run
+
 npm install 
+
 ng serve --open
