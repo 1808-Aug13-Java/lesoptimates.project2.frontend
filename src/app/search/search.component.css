@@ -1,0 +1,78 @@
+@import '../app.component.css';
+.search-results {
+  font-size: 1.3em;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  border: 1px solid green;
+  grid-auto-columns:max-content;
+  grid-area: auto;
+}
+
+th, td{
+  border: 1px solid red;
+}
+.grid-header {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 1.3em;
+}
+.grid-item { 
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  width: 240px;
+  padding: 10px;
+  text-align:center;
+  align-items: center;
+  grid-column-gap: 0;
+
+  border: 1px solid red;
+
+}
+.grid-item img {
+  width:150px;
+  border-radius: 25px;
+  border: 2px solid #ddd;
+}
+
+a {
+  color: #000;
+}
+
+#recipe-title-header {
+  grid-column-start: 3;
+  grid-column-end:4;
+}
+#recipe-publisher-header {
+  grid-column-start: 4;
+  grid-column-end: 6;
+}
+#index {
+  width: 15%;
+}
+
+#recipe-title {
+  font-weight: 400;
+}
+#recipe-publisher {
+  font-weight: 300;
+}
+#recipe-image {
+}
+#save{
+  width: 40%;
+}
+#save a {
+  letter-width: 1px;
+  border: 1px solid #ddd;
+  font-family: arial, sans-serif;
+  padding:10px 3px;
+  border-radius: 25px;
+  
+  text-decoration: none;
+  background-color: #eef;
+}
