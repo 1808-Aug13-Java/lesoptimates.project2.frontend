@@ -1,20 +1,33 @@
 @import '../app.component.css';
+element {
+  --index-column-width: 55px;
+}
 .search-results {
   font-size: 1.3em;
+  display: grid;
 }
 
+.save a {
+  letter-width: -2px;
+  font-family: arial, sans-serif;
+  padding:10px 5px;
+  border-radius: 25px;
+  font-size: 0.6em; 
+  text-decoration: none;
+  background-color: #eaa;
+}
+.grid-container-header {
+  display: grid;
+  grid-template-areas: "index-header title-header publisher-header image-header save-header";
+  grid-column-gap: 0px;
+  grid-auto-columns:max-content;
+}
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  border: 1px solid green;
+  grid-template-areas: "index title publisher image save";
   grid-auto-columns:max-content;
-  grid-area: auto;
 }
 
-th, td{
-  border: 1px solid red;
-}
 .grid-header {
   font-weight: bold;
   text-decoration: underline;
@@ -30,49 +43,57 @@ th, td{
   align-items: center;
   grid-column-gap: 0;
 
-  border: 1px solid red;
+}
+#index-header {
+  grid-area: index-header;
+  width: 55px; 
+}
+#recipe-image-header {
+  grid-area: image-header;
+  width: 200px;
+}
 
+#recipe-title-header {
+  grid-area: title-header;
+  width: 300px;
+}
+#recipe-publisher-header {
+  grid-area: publisher-header;
+}
+#save-header {
+  grid-area:save-header;
+  width: 105px;
+}
+.index {
+  width: 55px;
+  grid-area: index;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+.recipe-title {
+  font-weight: 400;
+  grid-area: title;
+  width: 300px;
+}
+.recipe-publisher {
+  font-weight: 300;
+  grid-area: publisher;
+}
+.recipe-image {
+  grid-area: image;
+  width: 200px;
 }
 .grid-item img {
   width:150px;
   border-radius: 25px;
-  border: 2px solid #ddd;
+}
+
+.save{
+  width: 105px; 
+  grid-area:save;
 }
 
 a {
   color: #000;
 }
 
-#recipe-title-header {
-  grid-column-start: 3;
-  grid-column-end:4;
-}
-#recipe-publisher-header {
-  grid-column-start: 4;
-  grid-column-end: 6;
-}
-#index {
-  width: 15%;
-}
-
-#recipe-title {
-  font-weight: 400;
-}
-#recipe-publisher {
-  font-weight: 300;
-}
-#recipe-image {
-}
-#save{
-  width: 40%;
-}
-#save a {
-  letter-width: 1px;
-  border: 1px solid #ddd;
-  font-family: arial, sans-serif;
-  padding:10px 3px;
-  border-radius: 25px;
-  
-  text-decoration: none;
-  background-color: #eef;
-}
