@@ -1,7 +1,4 @@
 @import '../app.component.css';
-element {
-  --index-column-width: 55px;
-}
 .search-results {
   font-size: 1.3em;
   display: grid;
@@ -20,12 +17,10 @@ element {
   display: grid;
   grid-template-areas: "index-header title-header publisher-header image-header save-header";
   grid-column-gap: 0px;
-  grid-auto-columns:max-content;
 }
 .grid-container {
   display: grid;
   grid-template-areas: "index title publisher image save";
-  grid-auto-columns:max-content;
   background-color: #efffff;
   border-radius: 8px;
 }
