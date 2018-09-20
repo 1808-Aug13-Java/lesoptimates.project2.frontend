@@ -26,6 +26,8 @@ element {
   display: grid;
   grid-template-areas: "index title publisher image save";
   grid-auto-columns:max-content;
+  background-color: #efffff;
+  border-radius: 8px;
 }
 
 .grid-header {
