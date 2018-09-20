@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { ContentComponent } from './content/content.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -15,7 +14,6 @@ import { SearchComponent } from './search/search.component';
   declarations: [
     AppComponent,
     NavComponent,
-    ContentComponent,
     LoginComponent,
     HomeComponent,
     FoodcallComponent,

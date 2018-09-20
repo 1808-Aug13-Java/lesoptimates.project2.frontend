@@ -23,27 +23,22 @@
 
 -->
 <section class="search-results main-content">
-  <div class="grid-container-header" >
-
-      <div class="grid-item grid-header nothing" id="index-header"></div>
-      <div class="grid-item grid-header nothing" id="recipe-image-header"></div>
-      <div class="grid-item grid-header" id="recipe-title-header" >Title</div>
-      <div class="grid-item grid-header" id="recipe-publisher-header" >from</div>
-      <div class="grid-item grid-header nothing" id="save-header"></div>
-  </div>
   <div class="grid-container" *ngFor="let r of results.recipes">
 
-      <div class="grid-item index" >1</div>
-      <div class="grid-item recipe-image" >
+      <div class="grid-item grid-header" id="recipe-title-header">Title</div>
+      <div class="grid-item grid-header" id="recipe-publisher-header">from</div>
+
+      <div class="grid-item" id="index" >1</div>
+      <div class="grid-item" id="recipe-image">
         <img src={{r.image_url}}/>
       </div>
-      <div class="grid-item recipe-title" >
+      <div class="grid-item" id="recipe-title" >
         <a href={{r.source_url}}>{{r.title}}</a>
       </div>
-      <div class="grid-item recipe-publisher" >
+      <div class="grid-item" id="recipe-publisher">
         <a href={{r.publisher_url}}>{{r.publisher}}</a>
       </div>
-      <div class="grid-item save" >
+      <div class="grid-item" id="save">
         <a href="" >( ͡° ͜ʖ ͡°)</a>
       </div>
 
