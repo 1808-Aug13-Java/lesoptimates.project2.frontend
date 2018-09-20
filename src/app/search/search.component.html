@@ -23,22 +23,13 @@
 
 -->
 <section class="search-results main-content">
-  <div class="grid-container-header" >
-
-      <div class="grid-item grid-header" id="index-header"></div>
-      <div class="grid-item grid-header" id="recipe-title-header">Title</div>
-      <div class="grid-item grid-header" id="recipe-publisher-header">from</div>
-      <div class="grid-item grid-header" id="image-header"></div>
-      <div class="grid-item grid-header" id="save-header"></div>
-
-  </div>
   <div class="grid-container" *ngFor="let r of results.recipes">
-      <div class="grid-item index" >1</div>
+      <div class="grid-item index" >1.</div>
       <div class="grid-item recipe-title" >
         <a href={{r.source_url}}>{{r.title}}</a>
       </div>
       <div class="grid-item recipe-publisher">
-        <a href={{r.publisher_url}}>{{r.publisher}}</a>
+        <a href={{r.publisher_url}}>-{{r.publisher}}</a>
       </div>
       <div class="grid-item recipe-image">
         <img src={{r.image_url}}/>

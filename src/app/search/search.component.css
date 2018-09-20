@@ -7,63 +7,37 @@
 .save a {
   letter-width: -2px;
   font-family: arial, sans-serif;
-  padding:10px 5px;
+  padding:7px 3px;
   border-radius: 25px;
-  font-size: 0.6em; 
+  font-size: 0.7em; 
   text-decoration: none;
-  background-color: #eaa;
-}
-.grid-container-header {
-  display: grid;
-  grid-template-areas: "index-header title-header publisher-header image-header save-header";
-  grid-column-gap: 0px;
+  background-color: #f78
 }
 .grid-container {
   display: grid;
-  grid-template-areas: "index title publisher image save";
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: 1fr 3fr 3fr 1fr 1fr;
+  grid-template-areas: "image image image image" 
+                   "index title title save"
+                   "index publisher publisher save";
   background-color: #efffff;
   border-radius: 8px;
-}
 
-.grid-header {
-  font-weight: bold;
-  text-decoration: underline;
-  font-size: 1.3em;
 }
 .grid-item { 
   display: flex;
   flex: 1;
   justify-content: center;
-  width: 240px;
-  padding: 10px;
   text-align:center;
   align-items: center;
   grid-column-gap: 0;
-
 }
-#index-header {
-  grid-area: index-header;
-  width: 55px; 
-}
-#recipe-image-header {
-  grid-area: image-header;
-  width: 200px;
-}
-
-#recipe-title-header {
-  grid-area: title-header;
-  width: 300px;
-}
-#recipe-publisher-header {
-  grid-area: publisher-header;
-}
-#save-header {
-  grid-area:save-header;
-  width: 105px;
+.nothing {
+  grid-area:nothing;
 }
 .index {
-  width: 55px;
   grid-area: index;
+  font-family: arial;
   font-weight: bold;
   font-size: 1.4em;
 }
@@ -74,19 +48,19 @@
 }
 .recipe-publisher {
   font-weight: 300;
+  font-style: italic;
   grid-area: publisher;
 }
 .recipe-image {
   grid-area: image;
-  width: 200px;
 }
 .grid-item img {
-  width:150px;
   border-radius: 25px;
+  border: 3px solid #ddd;
+  height:150px;
 }
 
 .save{
-  width: 105px; 
   grid-area:save;
 }
 
