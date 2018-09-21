@@ -23,8 +23,9 @@
 
 -->
 <section class="search-results main-content">
-  <div class="grid-container" *ngFor="let r of results.recipes">
-      <div class="grid-item index" >1.</div>
+  <button (click)="showRecipe()" > click </button>
+  <div class="grid-container" *ngFor="let r of response; index as i">
+    <div class="grid-item index" >{{i}}.</div>
       <div class="grid-item recipe-title" >
         <a href={{r.source_url}}>{{r.title}}</a>
       </div>

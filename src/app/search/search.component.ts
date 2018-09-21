@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 /*
 count: Number of recipes in result (Max 30)
 recipes: List of Recipe Parameters ->
@@ -28,7 +29,16 @@ recipes: List of Recipe Parameters ->
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+  response:any;
+  showRecipe() {
+    this.httpClient.get("https://www.food2fork.com/api/search?key=be39b50b44c08b2d0f97d97a60b8191b")
+      .subscribe( (data:any) => {
+        this.response = data.recipes;
+        console.log(this.response);
+      });
+  }
+
   results = {
     "count": "30",
     "recipes":
