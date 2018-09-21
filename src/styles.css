@@ -1,13 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "~bootstrap/dist/css/bootstrap.min.css"; */
-/*?? why import bootsrap from a local file? this has to be pushed to web
-wouldn't a url link be better?
-*/
 
 @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:600');
 html {
-  cursor: url("assets/gordon75.png"), auto;
 }
 
 .main-content {

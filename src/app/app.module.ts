@@ -10,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FoodcallComponent } from './foodcall/foodcall.component';
 import { SearchComponent } from './search/search.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { PasswordValidation } from './create-user/validatePswd';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -19,11 +23,15 @@ import { SearchComponent } from './search/search.component';
     LoginComponent,
     HomeComponent,
     FoodcallComponent,
-    SearchComponent
+    SearchComponent,
+    CreateUserComponent,
+    PasswordValidation
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
