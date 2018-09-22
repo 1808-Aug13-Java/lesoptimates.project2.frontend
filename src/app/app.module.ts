@@ -1,24 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { ContentComponent } from './content/content.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { FoodcallComponent } from './foodcall/foodcall.component';
+import { SearchComponent } from './search/search.component';
+import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    ContentComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    FoodcallComponent,
+    SearchComponent,
+    SavedRecipesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
