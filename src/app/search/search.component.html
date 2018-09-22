@@ -36,7 +36,7 @@
         <img src={{r.image_url}}/>
       </div>
       <div class="grid-item save">
-        <a href="" >( ͡° ͜ʖ ͡°)</a>
+        <a (click)="toggle()" [@saveToFavorites]="isSaved ? 'saved' : 'unsaved'" >( ͡° ͜ʖ ͡°)</a>
       </div>
 
   </div>
