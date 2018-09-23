@@ -4,6 +4,13 @@
   display: grid;
 }
 
+#recipeDiv{
+    
+  overflow-y: scroll; 
+  overflow-x: hidden;
+  height:400px;
+}
+
 .save a {
 
   font-family: arial, sans-serif;
