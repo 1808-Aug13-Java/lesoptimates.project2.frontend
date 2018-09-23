@@ -14,3 +14,10 @@
   font-size: 2.5em;
 }
 
+<<<<<<< HEAD
+=======
+.custom-nav a:hover {
+  color: blue;
+  cursor: url("../../assets/gordon75.png"), auto;
+}
+>>>>>>> feature-jonathan

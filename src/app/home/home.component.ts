@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
+=======
+import { SearchComponent } from '../search/search.component';
+>>>>>>> feature-jonathan
 
 @Component({
   selector: 'app-home',
@@ -8,7 +12,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   constructor() { }
+<<<<<<< HEAD
 
+=======
+  results:any[] = SearchComponent["results"];
+>>>>>>> feature-jonathan
   ngOnInit() {
   }
 

@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+<<<<<<< HEAD
 import { Recipe } from './models/Recipe';
+=======
+import { Recipe } from '../models/Recipe';
+>>>>>>> feature-jonathan
 import { Observable, of } from 'rxjs';
 
 @Injectable({
