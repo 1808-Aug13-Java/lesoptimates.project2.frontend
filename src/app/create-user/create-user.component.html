@@ -1,48 +1,56 @@
-<div class="container" *ngIf='this.bsButton'>
-  <h3>Create New Profile</h3>
-  <form ngNoForm [formGroup]="profileForm" name="profileName" method="POST" target="_blank" action="http://localhost:8082/lesoptimates.project2.backend/newUser" #form>
+<div class="container">
+  <br>
+  <div class="container" *ngIf='this.bsButton'>
+    <h3>Create New Profile</h3>
+    <form ngNoForm [formGroup]="profileForm" name="profileName" method="POST" target="_blank" action="http://localhost:8082/lesoptimates.project2.backend/newUser"
+      #form>
       <div class="form-group row">
-          <label for="userNameInput" class="col-sm-2 col-form-label">Username</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="userNameInput" formControlName="userName" name="userName" placeholder="JohnPetersFarmer">
-          </div>
-          <div class="alert alert-danger"
-          *ngIf="profileForm.controls.userName.errors?.ValidateUserName">That username is already taken.</div>
+        <label for="userNameInput" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="userNameInput" formControlName="userName" name="userName"
+            placeholder="JohnPetersFarmer">
         </div>
-        <div class="form-group row">
-            <label for="nameInput" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="nameInput" formControlName="name" name="name" placeholder="John Peters">
-            </div>
-          </div>
-    <div class="form-group row">
-      <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail" formControlName="email" name="email" placeholder="youKnowTheFarmer@aol.com">
+        <div class="alert alert-danger" *ngIf="profileForm.controls.userName.errors?.ValidateUserName">That username is
+          already taken.</div>
       </div>
-    </div>
-    <div class="form-group row">
-      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" formControlName="password" id="inputPassword" placeholder="Password">
+      <div class="form-group row">
+        <label for="nameInput" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="nameInput" formControlName="name" name="name" placeholder="John Peters">
+        </div>
       </div>
-    </div>
-    <div class="form-group row">
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail" formControlName="email" name="email" placeholder="youKnowTheFarmer@aol.com">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" formControlName="password" id="inputPassword" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group row">
         <label for="inputPassword2" class="col-sm-2 col-form-label">Confirm Password</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword2" formControlName="testPassword" name="pswd" placeholder="Password">
-          <div class="alert alert-danger"
-          *ngIf="profileForm.controls.testPassword.errors?.MatchPassword">Password not match</div>
+          <input type="password" class="form-control" id="inputPassword2" formControlName="testPassword" name="pswd"
+            placeholder="Password">
+          <div class="alert alert-danger" *ngIf="profileForm.controls.testPassword.errors?.MatchPassword">Password not
+            match</div>
         </div>
       </div>
-    <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
-          <button id='html'  *ngIf='this.bsButton' (click)='this.htmlButton = false; this.bsButton = true' class="btn btn-primary">New User</button>
-        <button type="submit" id='bootstrap' *ngIf='this.htmlButton' (click)="form.submit()" class="btn btn-primary">Create Profile</button>
+      <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+          <button type="submit" id='bootstrap' (click)="form.submit()" class="btn btn-primary">Create Profile</button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
+  <div class="container">
+    <button class='btn btn-primary' id='html' *ngIf='this.htmlButton' (click)='this.htmlButton = false; this.bsButton = true'>Create
+      User</button>
+    <button class='btn btn-primary' id='bootstrap' *ngIf='this.bsButton' (click)='this.bsButton = false; this.htmlButton = true'>Create
+      User</button>
+  </div>
 </div>
-
-<button class='btn btn-primary' id='html' *ngIf='this.htmlButton' (click)='this.htmlButton = false; this.bsButton = true'>Bootstrap</button>
-<button class='btn btn-success' id='bootstrap' *ngIf='this.bsButton' (click)='this.bsButton = false; this.htmlButton = true'>HTML</button>

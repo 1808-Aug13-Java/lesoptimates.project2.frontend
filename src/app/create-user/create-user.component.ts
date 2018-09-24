@@ -28,8 +28,8 @@ export class CreateUserComponent implements OnInit {
     })
   }
 
-  htmlButton = false;
-  bsButton = true;
+  htmlButton = true;
+  bsButton = false;
 
   ngOnInit() {
   }
