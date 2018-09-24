@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FoodcallComponent } from './foodcall/foodcall.component';
 import { SearchComponent } from './search/search.component';
 import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
