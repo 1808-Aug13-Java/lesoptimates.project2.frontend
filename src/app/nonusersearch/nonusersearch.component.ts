@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../../models/Recipe';
-import { SavedRecipesComponent } from '../saved-recipes/saved-recipes.component';
 import { HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -16,7 +15,9 @@ export class NonusersearchComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
   response:any;
   showRecipe() {
-    this.httpClient.get("https://www.food2fork.com/api/search?key=1f15f4b4b0d1f534478e53ac0e52e894")
+
+    //q=chicken%20breast
+    this.httpClient.get("https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d")
       .subscribe( (data:any) => {
         this.response = data.recipes;
         console.log(this.response);
