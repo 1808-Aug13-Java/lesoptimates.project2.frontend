@@ -16,7 +16,7 @@ import { FormValidation } from './create-user/validatePswd';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
 import { NonusersearchComponent } from './nonusersearch/nonusersearch.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,8 @@ import { NonusersearchComponent } from './nonusersearch/nonusersearch.component'
   providers: [
     FormValidation,
     HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })
