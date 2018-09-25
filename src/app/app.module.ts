@@ -34,14 +34,8 @@ import { NonusersearchComponent } from './nonusersearch/nonusersearch.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
     HttpClientModule,
-    HttpModule
-  ],
-  providers: [
-    FormValidation,
-    HttpClientModule
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

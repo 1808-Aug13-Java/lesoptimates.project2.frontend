@@ -4,11 +4,13 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
+import { AuthGuardService } from "./auth-guard.service";
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'savedrecipes', component: SavedRecipesComponent},
+  { path: 'savedrecipes', component: SavedRecipesComponent, canActivate: [AuthGuardService] },
   { path: '', redirectTo: 'home', pathMatch: 'full'}
 
 ];

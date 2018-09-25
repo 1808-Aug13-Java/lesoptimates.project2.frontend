@@ -11,21 +11,33 @@ export class SavedRecipesComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) { }
   response:any;
+  userId:string;
 
   ngOnInit() {
-    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes ")
-    .subscribe( (data:any) => {
 
-      for (var i=0; i<data.length; i++){
-        data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
+    this.getSession().then((data:any) => {
+      if(data!=null){
+        this.userId = data.userId;
+        console.log(this.userId);
 
+        this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+this.userId)
+        .subscribe( (data:any) => {
+    
+          for (var i=0; i<data.length; i++){
+            data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
+    
+          }
+    
+          console.log(data);
+          this.response = data;
+          
+        });
       }
-
-      console.log(data);
-      this.response = data;
-      
     });
+  }
 
+  getSession():Promise<string> {
+    return this.httpClient.get<string>("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true}).toPromise();
   }
 
   deleteRecipe(recipeId){ 
