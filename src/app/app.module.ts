@@ -18,6 +18,7 @@ import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
 import { NonusersearchComponent } from './nonusersearch/nonusersearch.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,11 +32,13 @@ import { NonusersearchComponent } from './nonusersearch/nonusersearch.component'
     SavedRecipesComponent,
     NonusersearchComponent
   ],
+  providers: [FormValidation],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })
