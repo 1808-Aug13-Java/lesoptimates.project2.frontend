@@ -15,8 +15,8 @@ export class NonusersearchComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
   response:any;
   showRecipe() {
-
-    //q=chicken%20breast question string format
+    let url = "https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d";
+    //&q=chicken%20breast question string format
     this.httpClient.get("https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d")
       .subscribe( (data:any) => {
         this.response = data.recipes;
