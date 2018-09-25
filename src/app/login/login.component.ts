@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +12,19 @@ export class LoginComponent implements OnInit {
 
   @Input() username: string;
   @Input() password: string;
-
-  constructor(private httpClient: HttpClient) {  }
   response:any;
+  hide:boolean = true;
+
+  
+
+  constructor(private httpClient: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute) {  }
+  
+ 
 
 
-  ngOnInit() {
-    // this.httpClient.get('http://localhost:8080/lesoptimates.project2.backend/token', {withCredentials:true}).subscribe( (data:any) => {
-    //   this.token = data;
-    //   console.log(this.token);
-    // });
-  }
+  ngOnInit() {}
 
 
   login(){
@@ -40,7 +43,9 @@ export class LoginComponent implements OnInit {
       this.response = data;
       console.log(this.response);
       this.getSession();
-      this.ngOnInit();
+      if(this.response){
+        this.router.navigateByUrl('/home');
+      }
     });
 
   }
@@ -55,6 +60,7 @@ export class LoginComponent implements OnInit {
 
   logout(){
     this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
+    this.hide = false;
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../../models/Recipe';
-import { SavedRecipesComponent } from '../saved-recipes/saved-recipes.component';
 import { HttpHeaders } from '@angular/common/http';
 
 
@@ -76,8 +75,10 @@ export class SearchComponent implements OnInit {
   getSession() {
     this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
       .subscribe( (data:any) => {
-        this.userId = data.userId;
-        console.log(this.userId);
+        if(data!=null){
+          this.userId = data.userId;
+          console.log(this.userId);
+        }
       });
   }
   
