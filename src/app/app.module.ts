@@ -10,7 +10,10 @@ import { HomeComponent } from './home/home.component';
 import { FoodcallComponent } from './foodcall/foodcall.component';
 import { SearchComponent } from './search/search.component';
 import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
-import { FormsModule } from '@angular/forms';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { PasswordValidation } from './create-user/validatePswd';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +23,17 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FoodcallComponent,
     SearchComponent,
-    SavedRecipesComponent
+    SavedRecipesComponent,
+    CreateUserComponent,
+    PasswordValidation
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
