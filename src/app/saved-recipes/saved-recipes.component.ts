@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-saved-recipes',
@@ -9,13 +10,14 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class SavedRecipesComponent implements OnInit {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+  private sessionService: SessionService) { }
   response:any;
   userId:string;
 
   ngOnInit() {
 
-    this.getSession().then((data:any) => {
+    this.sessionService.getSessionPromise().then((data:any) => {
       if(data!=null){
         this.userId = data.userId;
         console.log(this.userId);
@@ -35,11 +37,6 @@ export class SavedRecipesComponent implements OnInit {
       }
     });
   }
-
-  getSession():Promise<string> {
-    return this.httpClient.get<string>("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true}).toPromise();
-  }
-
   deleteRecipe(recipeId){ 
 
 

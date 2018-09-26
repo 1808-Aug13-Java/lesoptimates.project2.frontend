@@ -4,8 +4,15 @@
   display: grid;
 }
 
+#recipeDiv{
+    
+  overflow-y: scroll; 
+  overflow-x: hidden;
+  height:400px;
+}
+
 .save a {
-  letter-width: -2px;
+
   font-family: arial, sans-serif;
   padding:7px 3px;
   border-radius: 25px;
