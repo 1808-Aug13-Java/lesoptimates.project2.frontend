@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
 import { SessionService } from '../session.service';
 
 @Component({
@@ -16,8 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(private sessionService: SessionService) {  }
   
   
-  ngOnInit() {
-  }
+  ngOnInit() {console.log(this.sessionService.getCurrentUserId())}
 
 
   login(){

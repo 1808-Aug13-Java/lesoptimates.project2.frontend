@@ -18,17 +18,10 @@ export class HomeComponent implements OnInit {
   ) { }
     response:any;
     userId:string;
-      isLoggedIn: Observable<boolean>;
     @Input() username: string;
     @Input() password: string;
   
-    ngOnInit() {
-      this.isLoggedIn = this.sessionService.isLoggedIn;
-      console.log(this.sessionService.getCurrentUserId());
-      if(!this.sessionService.userId){
-        this.router.navigateByUrl("/login");
-      }
-  
+    ngOnInit() {  
       this.sessionService.getSessionPromise().then((data:any) => {
         if(data!=null){
           this.userId = data.userId;
@@ -46,6 +39,9 @@ export class HomeComponent implements OnInit {
             this.response = data;
             
           });
+        }
+        else{
+          this.router.navigateByUrl("/login");
         }
       });
     }
