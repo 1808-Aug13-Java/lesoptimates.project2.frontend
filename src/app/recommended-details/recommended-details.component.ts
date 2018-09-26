@@ -10,21 +10,15 @@ import { Recipe } from '../../models/Recipe';
 export class RecommendedDetailsComponent implements OnInit {
 
   constructor(private recipeService: RecipeService) { }
-  recipeChefs: Recipe[];
+  recipeChefs: Recipe[] = [];
   res:any;
   showChefRecipes() {
-    this.recipeService.getChefRecipes()
+    this.recipeService.getChefRecipes(1)
       .subscribe( (data: RecipeUsers[]) => {
-        //this.recipeChefs = data;
-        //recipes = recipeChefs
         for (var i=0; i<data.length; i++){
-          //console.log(data[i].recipeJSON);
-          JSON.parse(data[i].recipeJSON);
-          console.log(this.res);
-          //this.recipeChefs.push(data[i].recipeJSON);
-    //this.recipeChefs.push(JSON.parse(data[i].recipeJSON))
+          this.res = JSON.parse(data[i].recipeJSON);
+          this.recipeChefs.push(this.res);
         }
-        //this.recipeChefs = JSON.parse(data);
       });
   }
   ngOnInit() {

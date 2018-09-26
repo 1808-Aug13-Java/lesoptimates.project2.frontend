@@ -3,7 +3,7 @@
     <div class="grid-container" *ngFor="let r of recipeChefs; index as i">
       <div class="grid-item index">{{i+1}}.</div>
       <div class="grid-item recipe-title">
-        <a href={{r.recipeJSON.title}>{{r.recipeJSON.title}}</a>
+        <a href={{r.title}}>{{r.title}}</a>
       </div>
       <div class="grid-item recipe-publisher">
         <a href={{r.publisher_url}}>-{{r.publisher}}</a>

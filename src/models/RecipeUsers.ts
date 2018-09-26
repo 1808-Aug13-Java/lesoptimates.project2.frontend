@@ -3,7 +3,7 @@ import { Recipe } from './Recipe';
 export class RecipeUsers {
   user: {User};
   recipeId: number;
-  recipeJSON: {Recipe};
+  recipeJSON: string;
 }
 
 /*

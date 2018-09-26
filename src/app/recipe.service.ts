@@ -27,7 +27,9 @@ export class RecipeService {
   getChefs(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.chefsUrl);
   }
-  getChefRecipes(): Observable<RecipeUsers[]> {
+  getChefRecipes(chefId:number): Observable<RecipeUsers[]> {
+    //uncomment to match endpoint pattern of real server
+    //return this.httpClient.get<RecipeUsers[]>(this.recipeUsersUrl + chefId); 
     return this.httpClient.get<RecipeUsers[]>(this.recipeUsersUrl);
   }
   showUserRecipes(){
