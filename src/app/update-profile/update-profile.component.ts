@@ -35,7 +35,7 @@ export class UpdateProfileComponent implements OnInit {
     &pswd=${this.profileForm.value.password}`;
       console.log("body is : " + body);
 
-      this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/newUser", body, headers)
+      this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/updateUser", body, headers)
         .subscribe(success => console.log('success'),
           error => {
             console.log(error.status);;
