@@ -22,7 +22,7 @@ export class SavedRecipesComponent implements OnInit {
         this.userId = data.userId;
         console.log(this.userId);
 
-        this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+this.userId)
+        this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/recipes/users/"+this.userId)
         .subscribe( (data:any) => {
     
           for (var i=0; i<data.length; i++){
@@ -49,7 +49,7 @@ export class SavedRecipesComponent implements OnInit {
 
     let body = `recipeId=${recipeId}`;
 
-    this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/delete",body,  headers )
+    this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/recipes/delete",body,  headers )
     .subscribe( (data:any) => {
       this.response = data.recipes;
       console.log(this.response);

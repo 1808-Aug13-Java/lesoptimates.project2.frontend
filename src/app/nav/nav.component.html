@@ -6,11 +6,8 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a [hidden]="isLoggedIn | async" class="nav-link" routerLink="/login">login</a>
+        <a [hidden]="isLoggedIn | async" class="nav-link" routerLink="/login">login or create</a>
       </li>
-      <li class="nav-item">
-          <a [hidden]="isLoggedIn | async" class="nav-link" routerLink="/login">create profile</a>
-        </li>
       <li class="nav-item">
           <a *ngIf="isLoggedIn | async" class="nav-link" routerLink="/updateprofile">my profile</a>
         </li>

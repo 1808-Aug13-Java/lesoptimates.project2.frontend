@@ -15,19 +15,19 @@ export class SessionService {
   constructor(private httpClient: HttpClient,
   private router: Router) { }
 
-  getSession():any {
+  getCurrentUserId():string {
+    
     this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
       .subscribe( (data:any) => {
         if(data!=null){
           this.userId = data.userId;
-          console.log(this.userId);
         }
       });
       return this.userId;
   }
 
   getSessionPromise():Promise<string> {
-    return this.httpClient.get<string>("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true}).toPromise();
+    return this.httpClient.get<string>("http://localhost:8082/lesoptimates.project2.backend/session", {withCredentials:true}).toPromise();
   }
 
   get isLoggedIn() {
@@ -49,7 +49,7 @@ export class SessionService {
 
     let body = `userName=${username}&pswd=${password}`;
 
-    this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/login",body,  headers )
+    this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/login",body,  headers )
     .subscribe( (data:any) => {
       if(data){
         this.router.navigateByUrl('/home');
@@ -60,7 +60,7 @@ export class SessionService {
   }
 
   logout(){
-    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
+    this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
     this.isValidSession(false);
   }
 
