@@ -9,10 +9,12 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { FoodcallComponent } from './foodcall/foodcall.component';
 import { SearchComponent } from './search/search.component';
-import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { PasswordValidation } from './create-user/validatePswd';
+import { FormValidation } from './create-user/validatePswd';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
+import { NonusersearchComponent } from './nonusersearch/nonusersearch.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -25,17 +27,21 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     SearchComponent,
     SavedRecipesComponent,
     CreateUserComponent,
-    PasswordValidation
+    FormValidation,
+    NonusersearchComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    FormValidation,
+    HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

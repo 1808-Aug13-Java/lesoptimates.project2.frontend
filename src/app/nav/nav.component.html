@@ -6,16 +6,19 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">login</a>
+        <a [hidden]="isLoggedIn | async" class="nav-link" routerLink="/login">login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/search">search</a>
+        <a *ngIf="isLoggedIn | async" class="nav-link" routerLink="/search">search</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/savedrecipes">saved recipes</a>
+        <a [hidden]="isLoggedIn | async" class="nav-link" routerLink="/searchrecipes">search</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/createuser">Create User</a>
+        <a *ngIf="isLoggedIn | async" class="nav-link" routerLink="/savedrecipes">saved recipes</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="isLoggedIn | async" class="nav-link" routerLink="/logout">logout</a>
       </li>
     </ul>
   </div>
