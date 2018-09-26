@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
-
+import { SessionService } from '../session.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -10,9 +10,12 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  
+  isLoggedIn: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router, private sessionService: SessionService) { }
+
 
   // didSearch = false;
   recipeSearch: string;
@@ -32,7 +35,7 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.isLoggedIn = this.sessionService.isLoggedIn;
   }
 
 }

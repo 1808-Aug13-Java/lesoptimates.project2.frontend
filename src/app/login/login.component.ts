@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { SessionService } from '../session.service';
 
 @Component({
   selector: 'app-login',
@@ -12,55 +13,21 @@ export class LoginComponent implements OnInit {
 
   @Input() username: string;
   @Input() password: string;
-  response:any;
-  hide:boolean = true;
-
-  
 
   constructor(private httpClient: HttpClient,
     private router: Router,
-    private route: ActivatedRoute) {  }
+    private sessionService: SessionService) {  }
   
- 
-
-
+  
   ngOnInit() {}
 
 
   login(){
-
-    
-    const headers = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/x-www-form-urlencoded',
-      }), withCredentials:true
-    };   
-
-    let body = `userName=${this.username}&pswd=${this.password}`;
-
-    this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/login",body,  headers )
-    .subscribe( (data:any) => {
-      this.response = data;
-      console.log(this.response);
-      this.getSession();
-      if(this.response){
-        this.router.navigateByUrl('/home');
-      }
-    });
-
-  }
-
-  getSession() {
-    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
-      .subscribe( (data:any) => {
-        this.response = data;
-        console.log(this.response);
-      });
+    this.sessionService.login(this.username,this.password);
   }
 
   logout(){
-    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
-    this.hide = false;
+    this.sessionService.logout();
   }
 
 }

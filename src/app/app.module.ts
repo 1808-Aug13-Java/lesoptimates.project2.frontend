@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
-
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -15,7 +13,7 @@ import { SearchComponent } from './search/search.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { FormValidation } from './create-user/validatePswd';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
+import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
 import { NonusersearchComponent } from './nonusersearch/nonusersearch.component';
 
 
@@ -28,19 +26,21 @@ import { NonusersearchComponent } from './nonusersearch/nonusersearch.component'
     HomeComponent,
     FoodcallComponent,
     SearchComponent,
+    SavedRecipesComponent,
     CreateUserComponent,
     FormValidation,
-    SavedRecipesComponent,
     NonusersearchComponent
   ],
-  providers: [FormValidation],
+  providers: [FormValidation,
+    HttpClientModule],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

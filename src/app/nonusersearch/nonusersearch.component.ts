@@ -11,9 +11,10 @@ import { HttpHeaders } from '@angular/common/http';
 export class NonusersearchComponent implements OnInit {
 
   recipe: Recipe;
+  response:any;
 
   constructor(private httpClient: HttpClient) { }
-  response:any;
+
   showRecipe() {
     let url = "https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d";
     //&q=chicken%20breast question string format
