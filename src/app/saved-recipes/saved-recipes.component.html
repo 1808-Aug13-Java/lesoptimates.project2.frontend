@@ -23,21 +23,21 @@
 
 -->
 <section class="search-results main-content">
-  <div id="recipeDiv" class="container">
-    <div class="grid-container" *ngFor="let r of response; index as i">
-      <div class="grid-item index">{{i+1}}.</div>
-      <div class="grid-item recipe-title">
-        <a href={{r.source_url}}>{{r.title}}</a>
+  <div  class="grid-container" *ngFor="let r of response; index as i">
+    <div class="grid-item index" >{{i+1}}.</div>
+      <div class="grid-item recipe-title" >
+        <a href={{r.recipeJSON.source_url}}>{{r.recipeJSON.title}}</a>
       </div>
       <div class="grid-item recipe-publisher">
-        <a href={{r.publisher_url}}>-{{r.publisher}}</a>
+        <a href={{r.recipeJSON.publisher_url}}>-{{r.recipeJSON.publisher}}</a>
       </div>
       <div class="grid-item recipe-image">
-        <img src={{r.image_url}} />
+        <img src={{r.recipeJSON.image_url}}/>
       </div>
       <div class="grid-item save">
-        <button (click)="saveRecipe(r); toggle()" [@saveToFavorites]="isSaved ? 'saved' : 'unsaved'">Save</button>
+        <button (click)="deleteRecipe(r.recipeId)">Delete</button>
       </div>
-    </div>
+
   </div>
 </section>
+

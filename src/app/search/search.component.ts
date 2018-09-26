@@ -7,6 +7,11 @@ import {
   transition,
   animate
 } from '@angular/animations';
+import { Recipe } from '../../models/Recipe';
+import { SavedRecipesComponent } from '../saved-recipes/saved-recipes.component';
+import { HttpHeaders } from '@angular/common/http';
+
+
 /*
 count: Number of recipes in result (Max 30)
 recipes: List of Recipe Parameters ->
@@ -47,6 +52,10 @@ recipes: List of Recipe Parameters ->
   ],
 })
 export class SearchComponent implements OnInit {
+  recipe: Recipe;
+  userId: string;
+  //key1: d163d5127df3dc954c85893da2da4f2e 
+  //key2: 1f15f4b4b0d1f534478e53ac0e52e894
 
   constructor(private httpClient: HttpClient) { }
   response:any;
@@ -78,7 +87,17 @@ export class SearchComponent implements OnInit {
       }
     ]
   }
+
+  getSession() {
+    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
+      .subscribe( (data:any) => {
+        this.userId = data.userId;
+        console.log(this.userId);
+      });
+  }
+  
   ngOnInit() {
+    this.getSession();
   }
 
 }
