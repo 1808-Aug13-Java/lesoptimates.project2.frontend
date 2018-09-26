@@ -2,22 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../models/Recipe';
 import { HttpHeaders } from '@angular/common/http';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  recipe: Recipe;
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+  private sessionService: SessionService) { }
   response:any;
 
   showRecipe() {
     this.httpClient.get("https://www.food2fork.com/api/search?key=1f15f4b4b0d1f534478e53ac0e52e894")
       .subscribe( (data:any) => {
         this.response = data.recipes;
-        console.log(this.response);
       });
   }
 
@@ -39,7 +38,7 @@ export class RecipeService {
   }
 
 
-  saveRecipe(json){ 
+  saveRecipe(userId, json){ 
 
 
     const headers = {
@@ -48,17 +47,12 @@ export class RecipeService {
       })
     };
    
-    this.recipe = {
-      userId: "5",
-      JSON: json
-    }
-    console.log(this.recipe);
-    let body = `userId=${this.recipe.userId}&JSON=${JSON.stringify(this.recipe.JSON)}`;
+
+    let body = `userId=${userId}&JSON=${JSON.stringify(json)}`;
 
     this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/save",body,  headers )
     .subscribe( (data:any) => {
       this.response = data.recipes;
-      console.log(this.response);
     });
 
     this.showRecipe();
@@ -80,7 +74,19 @@ export class RecipeService {
     this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/delete",body,  headers )
     .subscribe( (data:any) => {
       this.response = data.recipes;
-      console.log(this.response);
+    });
+
+  }
+
+  returnUserRecipes(user):any{
+
+    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes"+user)
+    .subscribe( (data:any) => {
+  
+      for (var i=0; i<data.length; i++){
+        data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
+      }
+      return data;
     });
 
   }

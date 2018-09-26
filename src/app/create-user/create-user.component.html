@@ -1,6 +1,6 @@
 <div class="container">
   <br>
-  <div class="container" *ngIf='this.bsButton'>
+  <div class="container">
     <h3>Create New Profile</h3>
     <form ngNoForm [formGroup]="profileForm" name="profileName" method="POST" target="_blank" action="http://localhost:8082/lesoptimates.project2.backend/newUser"
       #form>
@@ -48,8 +48,6 @@
     </form>
   </div>
   <div class="container">
-    <button class='btn btn-primary' id='html' *ngIf='this.htmlButton' (click)='this.htmlButton = false; this.bsButton = true'>Create
-      User</button>
     <button class='btn btn-primary' id='bootstrap' *ngIf='this.bsButton' (click)='this.bsButton = false; this.htmlButton = true'>Login
     </button>
   </div>

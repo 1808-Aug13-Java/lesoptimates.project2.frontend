@@ -14,6 +14,7 @@ export class NavComponent implements OnInit {
   constructor(private sessionService: SessionService) { }
 
   ngOnInit() {
+    if(this.sessionService.getCurrentUserId()){}
     this.isLoggedIn = this.sessionService.isLoggedIn;
   }
 

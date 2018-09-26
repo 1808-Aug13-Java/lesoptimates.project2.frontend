@@ -10,17 +10,27 @@ import { Router } from '../../node_modules/@angular/router';
 export class SessionService {
 
   userId:string;
+
+  
   private loggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private httpClient: HttpClient,
-  private router: Router) { }
+  private router: Router) {
+    
+    if(this.getCurrentUserId()){
+      this.isValidSession(true)
+    }else{
+      this.isValidSession(false);
+    }
 
-  getSession():any {
+   }
+
+  getCurrentUserId():string {
+    
     this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
       .subscribe( (data:any) => {
         if(data!=null){
           this.userId = data.userId;
-          console.log(this.userId);
         }
       });
       return this.userId;
@@ -54,6 +64,7 @@ export class SessionService {
       if(data){
         this.router.navigateByUrl('/home');
         this.isValidSession(true);
+        this.userId = username;
       }
     });
 
@@ -61,6 +72,7 @@ export class SessionService {
 
   logout(){
     this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
+    this.userId = null;
     this.isValidSession(false);
   }
 

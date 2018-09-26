@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../../models/Recipe';
 import { HttpHeaders } from '@angular/common/http';
 import { SessionService } from '../session.service';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-search',
@@ -16,22 +17,36 @@ export class SearchComponent implements OnInit {
   //key2: 1f15f4b4b0d1f534478e53ac0e52e894
 
   constructor(private httpClient: HttpClient,
-  private sessionService: SessionService) { }
+  private sessionService: SessionService,
+  private recipeService: RecipeService) { }
 
-  ngOnInit() {
-    this.sessionService.getSession();
-  }
+  ngOnInit() {}
 
-  response:any;
   showRecipe() {
+    let response:any;
+    let recipes, savedRecipes: any[];
+    let currentUser:string = this.sessionService.getCurrentUserId();
+
+    if(currentUser){
+      savedRecipes = this.recipeService.returnUserRecipes(currentUser);
+    }
+
     this.httpClient.get("https://www.food2fork.com/api/search?key=d163d5127df3dc954c85893da2da4f2e")
       .subscribe( (data:any) => {
-        this.response = data.recipes;
-        console.log(this.response);
+        response = data.recipes;
+        console.log(response);
       });
+
+      for(let r of response){
+        for(let s of savedRecipes){
+          //TODO:if()
+        }
+
+
+      }
   }
 
-  saveRecipe(json){ 
+  saveRecipe(userId,json){ 
 
 
     const headers = {
@@ -40,17 +55,12 @@ export class SearchComponent implements OnInit {
       })
     };
    
-    this.recipe = {
-      userId: this.userId,
-      JSON: json
-    }
     console.log(this.recipe);
-    let body = `userId=${this.recipe.userId}&JSON=${JSON.stringify(this.recipe.JSON)}`;
+    let body = `userId=${userId}&JSON=${JSON.stringify(json)}`;
 
     this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/save",body,  headers )
     .subscribe( (data:any) => {
-      this.response = data.recipes;
-      console.log(this.response);
+  
     });
 
     this.showRecipe();

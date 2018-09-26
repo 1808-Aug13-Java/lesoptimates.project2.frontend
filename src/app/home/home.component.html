@@ -1,8 +1,42 @@
-<div class="main-content">
-  <div class="container">
-      <p>Having trouble deciding what to cook? Search for recipes based on ingrediants you like, or based on what's
-          in your fridge!
-      </p>
-      <app-nonusersearch></app-nonusersearch>
+<!-- <br><br>
+<div [hidden]="toggleOff" [hidden]="isLoggedIn | async" class="container">
+  <div class="alert alert-danger" [hidden]="!error">
+    There was a problem logging in. Please try again.
+  </div>
+  <form role="form" (submit)="login()">
+    <div class="form-group">
+      <label for="username">Username:</label> <input type="text"
+        class="form-control" id="username" name="username" [(ngModel)]="username"/>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label> <input type="password"
+        class="form-control" id="password" name="password" [(ngModel)]="password"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <br><br>
+  <button class='btn btn-primary' id='html' *ngIf='toggleOff' (click)="doToggleOff()">Create
+    User</button>
+</div>
+
+<app-create-user [hidden]="toggleOff" [hidden]="isLoggedIn | async"></app-create-user> -->
+
+<br><br>
+<div id="recipeDiv" class="container">
+  <div class="list-group">
+    <div *ngFor="let r of response; index as i">
+      <div class="d-flex w-100 justify-content-between">
+        <a href={{r.recipeJSON.source_url}}>{{r.recipeJSON.title}}</a>
+      </div>
+      <div class="grid-item recipe-image">
+        <img src={{r.recipeJSON.image_url}} />
+      </div>
+      <div class="d-flex w-100 justify-content-between">
+        <a href={{r.recipeJSON.publisher_url}}>Publisher: {{r.recipeJSON.publisher}}</a>
+      </div>
+      <div class="grid-item save">
+        <button class="btn btn-primary" (click)="deleteRecipe(r.recipeId)">Delete</button>
+      </div>
+    </div>
   </div>
 </div>

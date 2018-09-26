@@ -20,7 +20,6 @@ export class SavedRecipesComponent implements OnInit {
     this.sessionService.getSessionPromise().then((data:any) => {
       if(data!=null){
         this.userId = data.userId;
-        console.log(this.userId);
 
         this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+this.userId)
         .subscribe( (data:any) => {
@@ -30,7 +29,6 @@ export class SavedRecipesComponent implements OnInit {
     
           }
     
-          console.log(data);
           this.response = data;
           
         });
