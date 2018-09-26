@@ -8,7 +8,6 @@ import {
   animate
 } from '@angular/animations';
 import { Recipe } from '../../models/Recipe';
-import { HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SessionService } from '../session.service';
 

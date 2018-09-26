@@ -11,11 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { FoodcallComponent } from './foodcall/foodcall.component';
 import { SearchComponent } from './search/search.component';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { FormValidation } from './create-user/validatePswd';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
-import { NonusersearchComponent } from './nonusersearch/nonusersearch.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { TodaysSpecialsComponent } from './todays-specials/todays-specials.component';
 
 
 
@@ -29,11 +28,10 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     SearchComponent,
     SavedRecipesComponent,
     CreateUserComponent,
-    FormValidation,
-    NonusersearchComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    TodaysSpecialsComponent
   ],
-  providers: [FormValidation,
+  providers: [
     HttpClientModule],
   imports: [
     BrowserModule,

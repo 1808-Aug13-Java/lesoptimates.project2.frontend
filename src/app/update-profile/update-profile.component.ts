@@ -4,6 +4,8 @@ import {FormValidationService} from "../form-validation.service";
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SessionService } from '../session.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-update-profile',
@@ -13,10 +15,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UpdateProfileComponent implements OnInit {
   profileForm: FormGroup;
   response: any;
-  htmlButton = true;
-  bsButton = false;
-  userCreated = false;
-  userCreatedFailed = false;
+  userUpdated = false;
+  userUpdatedFailed = false;
+  isLoggedIn: Observable<boolean>;
 
 
   onSubmit() {
@@ -40,9 +41,9 @@ export class UpdateProfileComponent implements OnInit {
           error => {
             console.log(error.status);;
             if (error.status == 200) {
-              this.userCreated = true;
+              this.userUpdated = true;
             } else {
-              this.userCreatedFailed = true;
+              this.userUpdatedFailed = true;
             }
           });
     }else{
@@ -51,7 +52,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   constructor(fb: FormBuilder, private fv: FormValidationService,
-    private router: Router, private httpClient: HttpClient) {
+    private router: Router, private httpClient: HttpClient, private sessionService: SessionService) {
     this.profileForm = fb.group({
       userName: [null, Validators.required],
       name: [null, Validators.required],
@@ -66,6 +67,7 @@ export class UpdateProfileComponent implements OnInit {
 
 
   ngOnInit() {
+    this.isLoggedIn = this.sessionService.isLoggedIn;
   }
 
 }

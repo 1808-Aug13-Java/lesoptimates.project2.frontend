@@ -1,4 +1,4 @@
-<div class="container" *ngIf='this.bsButton'>
+<div class="container" *ngIf="isLoggedIn | async">
     <br>
     <h3>Update Profile</h3>
     <br>
@@ -41,8 +41,7 @@
           <input type="password" class="form-control" id="inputPassword2" formControlName="testPassword" name="pswd"
             placeholder="Password">
           <div class="alert alert-danger" *ngIf="profileForm.controls.testPassword.errors?.MatchPassword">Passwords do
-            not
-            match</div>
+            not match</div>
         </div>
       </div>
       <div class="form-group row">
@@ -51,7 +50,4 @@
         </div>
       </div>
     </form>
-  </div>
-  <div class="container">
-    <button class='btn btn-primary' id='html' *ngIf='this.htmlButton' (click)='this.htmlButton = false; this.bsButton = true'>Update Profile</button>
   </div>
