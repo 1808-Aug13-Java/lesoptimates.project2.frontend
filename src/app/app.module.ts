@@ -15,6 +15,7 @@ import { FormValidation } from './create-user/validatePswd';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
 import { NonusersearchComponent } from './nonusersearch/nonusersearch.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 
@@ -29,7 +30,8 @@ import { NonusersearchComponent } from './nonusersearch/nonusersearch.component'
     SavedRecipesComponent,
     CreateUserComponent,
     FormValidation,
-    NonusersearchComponent
+    NonusersearchComponent,
+    UpdateProfileComponent
   ],
   providers: [FormValidation,
     HttpClientModule],
