@@ -30,7 +30,7 @@ import { RecipeService } from '../recipe.service';
     ]),
   ],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
   recipe: Recipe;
   userId: string;
   //key1: d163d5127df3dc954c85893da2da4f2e 
@@ -64,6 +64,10 @@ export class SearchComponent implements OnInit {
           console.log(this.userId);
         }
       });
+  // response:any;
+  // isSaved = false;
+  // toggle() {
+  //   this.isSaved = !this.isSaved;
   }
   
   showRecipe() {
@@ -108,6 +112,7 @@ export class SearchComponent implements OnInit {
 
     this.showRecipe();
   }
+  
 
   ngOnInit() {
     this.search = this.route
