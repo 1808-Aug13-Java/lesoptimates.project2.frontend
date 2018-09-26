@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NonusersearchComponent } from './nonusersearch.component';
+import { RecommendedComponent } from './recommended.component';
 
-describe('NonusersearchComponent', () => {
-  let component: NonusersearchComponent;
-  let fixture: ComponentFixture<NonusersearchComponent>;
+describe('RecommendedComponent', () => {
+  let component: RecommendedComponent;
+  let fixture: ComponentFixture<RecommendedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NonusersearchComponent ]
+      declarations: [ RecommendedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NonusersearchComponent);
+    fixture = TestBed.createComponent(RecommendedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
