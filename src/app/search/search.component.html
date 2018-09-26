@@ -27,17 +27,21 @@
     <div class="grid-container" *ngFor="let r of response; index as i">
       <div class="grid-item index">{{i+1}}.</div>
       <div class="grid-item recipe-title">
+<div id="recipeDiv" class="container">
+<section class="search-results main-content">
+  
         <a href={{r.source_url}}>{{r.title}}</a>
       </div>
       <div class="grid-item recipe-publisher">
         <a href={{r.publisher_url}}>-{{r.publisher}}</a>
       </div>
       <div class="grid-item recipe-image">
-        <img src={{r.image_url}} />
+        <img src={{r.image_url}}/>
       </div>
       <div class="grid-item save">
         <button (click)="saveRecipe(r); toggle()" [@saveToFavorites]="isSaved ? 'saved' : 'unsaved'">Save</button>
+        <a (click)="toggle()" [@saveToFavorites]="isSaved ? 'saved' : 'unsaved'" ></a>
       </div>
-    </div>
+
   </div>
 </section>

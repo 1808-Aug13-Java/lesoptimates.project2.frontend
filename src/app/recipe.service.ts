@@ -73,7 +73,5 @@ export class RecipeService {
         this.response = data.recipes;
         console.log(this.response);
       });
-
   }
-
 }

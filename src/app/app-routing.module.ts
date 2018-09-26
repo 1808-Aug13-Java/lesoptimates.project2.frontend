@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
 import { RecommendedComponent } from './recommended/recommended.component';
 import { RecommendedDetailsComponent } from './recommended-details/recommended-details.component';
+import { AuthGuardService } from "./auth-guard.service";
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

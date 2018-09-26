@@ -1,8 +1,4 @@
-
-<app-create-user></app-create-user>
-<div class="alert alert-danger" [hidden]="!error">
-	There was a problem logging in. Please try again.
-</div>
+<div class="container">
 <form role="form" (submit)="login()">
 	<div class="form-group">
 		<label for="username">Username:</label> <input type="text"
@@ -14,5 +10,5 @@
 	</div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<br><br>
-  <button class="btn btn-error" (click)="logout()" >Logout</button>
+</div>
+<app-create-user></app-create-user>

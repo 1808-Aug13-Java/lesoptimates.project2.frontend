@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,6 @@ import { HttpHeaders } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   @Input() username: string;
   @Input() password: string;
-
-  constructor(private httpClient: HttpClient) {  }
   response:any;
   ngOnInit() {
     // this.httpClient.get('http://localhost:8080/lesoptimates.project2.backend/token', {withCredentials:true}).subscribe( (data:any) => {
@@ -19,6 +18,15 @@ export class LoginComponent implements OnInit {
     //   console.log(this.token);
     // });
   }
+  hide:boolean = true;
+
+  
+
+  constructor(private httpClient: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute) {  }
+  
+  ngOnInit() {}
 
   login(){
     const headers = {
@@ -34,6 +42,14 @@ export class LoginComponent implements OnInit {
         this.getSession();
         this.ngOnInit();
       });
+    .subscribe( (data:any) => {
+      this.response = data;
+      console.log(this.response);
+      this.getSession();
+      if(this.response){
+        this.router.navigateByUrl('/home');
+      }
+    });
   }
 
   getSession() {
@@ -46,5 +62,6 @@ export class LoginComponent implements OnInit {
 
   logout(){
     this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
+    this.hide = false;
   }
 }

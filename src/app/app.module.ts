@@ -19,12 +19,15 @@ import { SavedRecipesComponent} from './saved-recipes/saved-recipes.component';
 import { RecommendedComponent } from './recommended/recommended.component';
 import { RecommendedDetailsComponent } from './recommended-details/recommended-details.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     LoginComponent,
     HomeComponent,
+    FoodcallComponent,
     SearchComponent,
     CreateUserComponent,
     FormValidation,
@@ -32,6 +35,7 @@ import { RecommendedDetailsComponent } from './recommended-details/recommended-d
     RecommendedComponent,
     RecommendedDetailsComponent
   ],
+  providers: [FormValidation],
   imports: [
     HttpClientInMemoryWebApiModule.forRoot(
       ChefsRepositoryService, { dataEncapsulation: false }
@@ -48,6 +52,9 @@ import { RecommendedDetailsComponent } from './recommended-details/recommended-d
     FormValidation,
     HttpClientModule,
     FormsModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })

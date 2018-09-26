@@ -21,6 +21,7 @@ export class FormValidation {
         if (password != confirmPassword) {
             console.log('false');
             AC.get('testPassword').setErrors({ MatchPassword: true })
+            
         } else {
             console.log('true');
             return null

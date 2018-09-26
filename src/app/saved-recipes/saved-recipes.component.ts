@@ -16,24 +16,24 @@ export class SavedRecipesComponent implements OnInit {
   ngOnInit() {
 
     this.getSession().then((data:any) => {
-      this.userId = data.userId;
-      console.log(this.userId);
-      this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+this.userId)
-      .subscribe( (data:any) => {
-  
-        for (var i=0; i<data.length; i++){
-          data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
-  
-        }
-  
-        console.log(data);
-        this.response = data;
-        
-      });
+      if(data!=null){
+        this.userId = data.userId;
+        console.log(this.userId);
+
+        this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+this.userId)
+        .subscribe( (data:any) => {
+    
+          for (var i=0; i<data.length; i++){
+            data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
+    
+          }
+    
+          console.log(data);
+          this.response = data;
+          
+        });
+      }
     });
-
-
-
   }
 
   getSession():Promise<string> {
