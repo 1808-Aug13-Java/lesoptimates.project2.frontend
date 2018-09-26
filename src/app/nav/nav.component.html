@@ -24,8 +24,8 @@
           </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="get recipes by ingredients" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="showRecipe(); this.didSearch=true;" type="submit">Search</button>
+        <input #search class="form-control mr-sm-2"  (keyup)="getSearchVal(search.value)" placeholder="get recipes by ingredients" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="showRecipe()" type="submit">Search</button>
       </form>
     </div>
   </nav>

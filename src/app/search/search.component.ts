@@ -9,6 +9,7 @@ import {
 } from '@angular/animations';
 import { Recipe } from '../../models/Recipe';
 import { HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 /*
@@ -55,11 +56,19 @@ export class SearchComponent implements OnInit {
   userId: string;
   //key1: d163d5127df3dc954c85893da2da4f2e 
   //key2: 1f15f4b4b0d1f534478e53ac0e52e894
+  //key3: 2ae4418069c000dc8c72aebc231c2e2d
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private route: ActivatedRoute,
+    private router: Router) { }
   response:any;
-  showRecipe() {
-    this.httpClient.get("https://www.food2fork.com/api/search?key=d163d5127df3dc954c85893da2da4f2e")
+  search: any;
+  searchStr: any;
+
+  showRecipes(str: string) {
+    console.log("showrecipescalled: " + str)
+    let url = "https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d&q=" + str;
+    console.log(url);
+    this.httpClient.get(url)
       .subscribe( (data:any) => {
         this.response = data.recipes;
         console.log(this.response);
@@ -132,6 +141,13 @@ export class SearchComponent implements OnInit {
   
   ngOnInit() {
     this.getSession();
+
+    this.search = this.route
+    .queryParams
+    .subscribe(params => {
+      // Defaults to 0 if no query param provided.
+      this.showRecipes(params.str);
+    });
   }
 
 }

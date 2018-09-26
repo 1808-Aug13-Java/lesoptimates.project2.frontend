@@ -22,51 +22,27 @@
   */
 
 -->
-<<<<<<< HEAD
+<div id="recipeDiv" class="container">
 <section class="search-results main-content">
-  <button (click)="showRecipe()" > click </button>
+  
+  <button class="btn btn-primary" (click)="showRecipe()" > search </button>
+
   <div class="grid-container" *ngFor="let r of response; index as i">
     <div class="grid-item index" >{{i}}.</div>
       <div class="grid-item recipe-title" >
-=======
-
-<section class="search-results main-content">
-  <div class="container">
-    <form class="form-inline">
-      <label class="sr-only" for="inlineFormInput">Ingredients</label>
-      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Beef, Broccoli">
-      <button type="submit" class="btn btn-primary" (click)="showRecipe()">Search</button>
-    </form>
-  </div>
-  <br>
-  <div id="recipeDiv" class="container">
-    <div class="grid-container" *ngFor="let r of response; index as i">
-      <div class="grid-item index">{{i+1}}.</div>
-      <div class="grid-item recipe-title">
->>>>>>> feature-jeremaih
         <a href={{r.source_url}}>{{r.title}}</a>
       </div>
       <div class="grid-item recipe-publisher">
         <a href={{r.publisher_url}}>-{{r.publisher}}</a>
       </div>
       <div class="grid-item recipe-image">
-<<<<<<< HEAD
         <img src={{r.image_url}}/>
       </div>
       <div class="grid-item save">
-        <a (click)="toggle()" [@saveToFavorites]="isSaved ? 'saved' : 'unsaved'" >( ͡° ͜ʖ ͡°)</a>
+        <a (click)="toggle()" [@saveToFavorites]="isSaved ? 'saved' : 'unsaved'" ></a>
       </div>
 
   </div>
 </section>
+</div>
 
-=======
-        <img src={{r.image_url}} />
-      </div>
-      <div class="grid-item save">
-        <button (click)="saveRecipe(r)">Save</button>
-      </div>
-    </div>
-  </div>
-</section>
->>>>>>> feature-jeremaih

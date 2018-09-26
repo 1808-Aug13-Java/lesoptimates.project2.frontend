@@ -48,18 +48,18 @@ export class RecipeService {
       })
     };
    
-    this.recipe = {
-      userId: "5",
-      JSON: json
-    }
-    console.log(this.recipe);
-    let body = `userId=${this.recipe.userId}&JSON=${JSON.stringify(this.recipe.JSON)}`;
+    // this.recipe = {
+    //   userId: "5",
+    //   JSON: json
+    // }
+    // console.log(this.recipe);
+    // let body = `userId=${this.recipe.userId}&JSON=${JSON.stringify(this.recipe.JSON)}`;
 
-    this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/save",body,  headers )
-    .subscribe( (data:any) => {
-      this.response = data.recipes;
-      console.log(this.response);
-    });
+    // this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/save",body,  headers )
+    // .subscribe( (data:any) => {
+    //   this.response = data.recipes;
+    //   console.log(this.response);
+    // });
 
     this.showRecipe();
   }
