@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/animations';
 import { Recipe } from '../../models/Recipe';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -29,7 +36,19 @@ recipes: List of Recipe Parameters ->
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  animations: [
+    trigger('saveToFavorites', [
+      state('saved', style({
+        backgroundColor: 'red'
+      })),
+      state('unsaved', style({
+        backgroundColor: 'white'
+      })),
+      transition('saved => unsaved', [animate('1s')]),
+      transition('unsaved => saved', [animate('1s')]),
+    ]),
+  ],
 })
 export class SearchComponent implements OnInit {
   recipe: Recipe;
@@ -47,8 +66,37 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  saveRecipe(json){ 
+/*   saveRecipe(json){ 
 
+  response:any;
+  isSaved = false;
+  toggle() {
+    this.isSaved = !this.isSaved;
+  }
+  showRecipe() {
+    this.httpClient.get("https://www.food2fork.com/api/search?key=be39b50b44c08b2d0f97d97a60b8191b")
+      .subscribe( (data:any) => {
+        this.response = data.recipes;
+        console.log(this.response);
+      });
+  }
+
+  results = {
+    "count": "30",
+    "recipes":
+    [
+      {
+  "f2f_url": "http://food2fork.com/view/35382",
+  "image_url": "http://static.food2fork.com/Jalapeno2BPopper2BGrilled2BCheese2BSandwich2B12B500fd186186.jpg",
+  "publisher": "Closet Cooking",
+  "publisher_url": "http://closetcooking.com",
+  "recipe_id": "35382",
+  "social_rank": 100,
+  "source_url": "http://www.closetcooking.com/2011/04/jalapeno-popper-grilled-cheese-sandwich.html",
+  "title": "Jalapeno Popper Grilled Cheese Sandwich"
+      }
+    ]
+  }
 
     const headers = {
       headers: new HttpHeaders({
@@ -70,7 +118,7 @@ export class SearchComponent implements OnInit {
     });
 
     this.showRecipe();
-  }
+  } */
 
   getSession() {
     this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
