@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { FormValidation } from './validatePswd';
+import {FormValidationService} from "../form-validation.service";
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -52,7 +52,7 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  constructor(fb: FormBuilder, private fv: FormValidation,
+  constructor(fb: FormBuilder, private fv: FormValidationService,
     private router: Router, private httpClient: HttpClient) {
     this.profileForm = fb.group({
       userName: [null, Validators.required],
