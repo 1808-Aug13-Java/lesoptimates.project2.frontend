@@ -24,6 +24,7 @@ export class NavComponent implements OnInit {
   getSearchVal(value: string) { this.recipeSearch = value; }
   response:any;
   chefs: User[];
+
   showRecipe() {
     console.log(this.recipeSearch);
     this.recipeSearch = this.recipeSearch ? this.recipeSearch : ''; //if recipeSearch is empty, set to empty string
@@ -41,9 +42,9 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = this.sessionService.isLoggedIn;
-    this.recipeService.getChefs().subscribe( (data:any) => {
+    this.recipeService.getChefs().subscribe( (data:User[]) => {
       this.chefs = data;
-      console.log(this.chefs);
+      console.log("chefs:" + this.chefs);
     });
 
   }
