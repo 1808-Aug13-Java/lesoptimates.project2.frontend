@@ -22,8 +22,11 @@ export class TodaysSpecialsComponent implements OnInit {
     console.log(url);
     this.httpClient.get(url)
       .subscribe( (data:any) => {
-        this.response = data.recipes;
+        for(let i;i<4;i++){
+          this.response = data.recipes;
         console.log(this.response);
+        }
+        
       });
   }
 
