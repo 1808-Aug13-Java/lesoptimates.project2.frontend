@@ -17,7 +17,6 @@ export class CreateUserComponent implements OnInit {
   bsButton = false;
   userCreated = false;
   userCreatedFailed = false;
-  url: "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/"
 
   onSubmit() {
     console.log(this.profileForm.valid);
@@ -32,7 +31,7 @@ export class CreateUserComponent implements OnInit {
     &pswd=${this.profileForm.value.password}`;
       console.log("body is : " + body);
 
-      this.httpClient.post(this.url +"newUser", body, headers)
+      this.httpClient.post( "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/newUser", body, headers)
         .subscribe(success => console.log('success'),
           error => {
             console.log(error.status);

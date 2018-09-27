@@ -11,13 +11,13 @@ export class SessionService {
 
   userId:string;
   private loggedIn = new BehaviorSubject<boolean>(false);
-  url: "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/"
+
   constructor(private httpClient: HttpClient,
   private router: Router) { }
 
   getCurrentUserId():string {
     
-    this.httpClient.get(this.url + "/session", {withCredentials:true})
+    this.httpClient.get("http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/session", {withCredentials:true})
       .subscribe( (data:any) => {
         if(data!=null){
           this.userId = data.userId;
@@ -27,7 +27,7 @@ export class SessionService {
   }
 
   getSessionPromise():Promise<string> {
-    return this.httpClient.get<string>(this.url + "/session", {withCredentials:true}).toPromise();
+    return this.httpClient.get<string>("http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/session", {withCredentials:true}).toPromise();
   }
 
   get isLoggedIn() {
@@ -47,7 +47,7 @@ export class SessionService {
 
     let body = `userName=${username}&pswd=${password}`;
 
-    this.httpClient.post(this.url + "/login",body,  headers )
+    this.httpClient.post("http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/login",body,  headers )
     .subscribe( (data:any) => {
       if(data){
         this.router.navigateByUrl('/home');
@@ -58,7 +58,7 @@ export class SessionService {
   }
 
   logout(){
-    this.httpClient.get(this.url + "/logout",{withCredentials:true}).subscribe();
+    this.httpClient.get("http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
     this.isValidSession(false);
   }
 

@@ -18,7 +18,7 @@ export class RecipeService {
   chefsUrl:string = "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/getChefs";
   recipeUsersUrl:string = "api/recipeChefs/";
   recipe: Recipe;
-  url: "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/";
+  
   response:any;
 
   showRecipe() {
@@ -37,7 +37,7 @@ export class RecipeService {
   }
   showUserRecipes(){
 
-    this.httpClient.get( this.url + "recipes")
+    this.httpClient.get(  "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/recipes")
     .subscribe( (data:any) => {
   
       for (var i=0; i<data.length; i++){
@@ -54,7 +54,7 @@ export class RecipeService {
 
 
   saveRecipe(userId, json){ 
-    this.httpClient.get(this.url + "recipes")
+    this.httpClient.get( "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/recipes")
       .subscribe( (data:any) => {
         for (var i=0; i<data.length; i++){
           data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
