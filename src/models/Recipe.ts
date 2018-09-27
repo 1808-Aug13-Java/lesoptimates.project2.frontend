@@ -1,4 +1,5 @@
 export interface Recipe {
-  recipeId: string;
-  recipeName: string;
+  userId: string;
+  JSON: string;
+  saved: boolean;
 }

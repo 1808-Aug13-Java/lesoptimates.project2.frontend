@@ -32,94 +32,113 @@ import { RecipeService } from '../recipe.service';
 })
 export class SearchComponent {
   recipe: Recipe;
+  recipes: Recipe[];
   userId: string;
+  response:any;
+  search: any;
+
   //key1: d163d5127df3dc954c85893da2da4f2e 
   //key2: 1f15f4b4b0d1f534478e53ac0e52e894
   //key3: 2ae4418069c000dc8c72aebc231c2e2d
+  //key 4: 0b4cc675b862d52a9421b08556bd7217
 
-  constructor(private httpClient: HttpClient, private route: ActivatedRoute,
-    private router: Router, private sessionService: SessionService,
-    private recipeService: RecipeService) { }
+  constructor(private httpClient: HttpClient, 
+    private route: ActivatedRoute) { }
 
-  response:any;
-  search: any;
-  searchStr: any;
+  ngOnInit() {
+    this.getSession();
+    this.search = this.route
+    .queryParams
+    .subscribe(params => {
+      this.showRecipes(params.str);
+    });
+  }
 
   showRecipes(str: string) {
     console.log("showrecipescalled: " + str)
-    let url = "https://www.food2fork.com/api/search?key=d163d5127df3dc954c85893da2da4f2e&q=" + str;
-    console.log(url);
+    let url = "https://www.food2fork.com/api/search?key=0b4cc675b862d52a9421b08556bd7217&q=" + str;
     this.httpClient.get(url)
       .subscribe( (data:any) => {
         this.response = data.recipes;
+        this.recipes = [];
+        for(let r of this.response){
+          let recipe: Recipe;
+          if(this.userId){
+            recipe = {
+              userId : this.userId,
+              JSON : r,
+              saved : false
+            }
+
+            
+       
+      this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+this.userId)
+      .subscribe( (data:any) => {
+    
+          for (var i=0; i<data.length; i++){
+            data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
+    
+          }
+    
+          for(let sr of data){
+            if(sr.recipeJSON.recipe_id == JSON.parse(JSON.stringify(recipe.JSON)).recipe_id){
+              recipe.saved = true;
+            }
+          }
+          this.recipes.push(recipe);
+
+        });  
+
+
+          }
+          else{
+            recipe = {
+              userId : null,
+              JSON : r,
+              saved : true
+        
+            }
+            this.recipes.push(recipe);
+          }
+        }
         console.log(this.response);
-      });
+      }); 
   }
 
-  getSession() {
-    this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/session", {withCredentials:true})
-      .subscribe( (data:any) => {
-        if(data!=null){
-          this.userId = data.userId;
-          console.log(this.userId);
-        }
-      });
-  // response:any;
-  // isSaved = false;
-  // toggle() {
-  //   this.isSaved = !this.isSaved;
-  }
-  
-  showRecipe() {
-    let response:any;
-    let recipes, savedRecipes: any[];
-    let currentUser:string = this.sessionService.getCurrentUserId();
-
-    if(currentUser){
-      savedRecipes = this.recipeService.returnUserRecipes(currentUser);
-    }
-
-    this.httpClient.get("https://www.food2fork.com/api/search?key=d163d5127df3dc954c85893da2da4f2e")
-      .subscribe( (data:any) => {
-        response = data.recipes;
-        console.log(response);
-      });
-
-      for(let r of response){
-        for(let s of savedRecipes){
-          //TODO:if()
-        }
+  saveRecipe(json){ 
 
 
-      }
-  }
-
-  saveRecipe(userId,json){ 
     const headers = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded'
       })
     };
    
-    console.log(this.recipe);
-    console.log("userId: " + userId)
-    let body = `userId=${userId}&JSON=${JSON.stringify(json)}`;
+    this.recipe = {
+      userId: this.userId,
+      JSON: json,
+      saved: null
 
-    this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/recipes/save",body,  headers )
+    }
+
+    let body = `userId=${this.recipe.userId}&JSON=${JSON.stringify(this.recipe.JSON)}`;
+
+    this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/save",body,  headers )
     .subscribe( (data:any) => {
-  
+      this.response = data.recipes;
     });
 
-    this.showRecipe();
+    this.ngOnInit();
   }
-  
 
-  ngOnInit() {
-    this.search = this.route
-    .queryParams
-    .subscribe(params => {
-      this.showRecipes(params.str);
-    });
+  getSession() {
+    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
+      .subscribe( (data:any) => {
+        if(data!=null){
+          this.userId = data.userId;
+          console.log(this.userId);
+        }
+      });
   }
 
 }
