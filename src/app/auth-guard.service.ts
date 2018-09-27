@@ -12,7 +12,7 @@ export class AuthGuardService implements CanActivate{
   constructor(private sessionService: SessionService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.sessionService.getSession() == null) {
+    if (this.sessionService.getCurrentUserId == null) {
       return true;
     } else {
       this.router.navigateByUrl('/login');

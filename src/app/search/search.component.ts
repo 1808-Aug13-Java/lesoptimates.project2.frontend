@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
 
   showRecipes(str: string) {
     console.log("showrecipescalled: " + str)
-    let url = "https://www.food2fork.com/api/search?key=d163d5127df3dc954c85893da2da4f2e&q=" + str;
+    let url = "https://www.food2fork.com/api/search?key=1f15f4b4b0d1f534478e53ac0e52e894&q=" + str;
     console.log(url);
     this.httpClient.get(url)
       .subscribe( (data:any) => {
