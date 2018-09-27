@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { User } from '../../models/User';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recommended',
@@ -17,7 +18,9 @@ export class RecommendedComponent implements OnInit {
         this.users = data;
         console.log(this.users);    
       }); 
+
   }
+
   ngOnInit() {
     this.showChefs();
   }

@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'savedrecipes', component: SavedRecipesComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'updateprofile', component: UpdateProfileComponent},
+  { path: 'recommended', component: RecommendedComponent },
   { path: 'recommended/:id', component: RecommendedDetailsComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'savedrecipes', component: SavedRecipesComponent},
