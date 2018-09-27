@@ -47,7 +47,7 @@ export class SearchComponent implements OnInit {
 
   showRecipes(str: string) {
     console.log("showrecipescalled: " + str)
-    let url = "https://www.food2fork.com/api/search?key=1f15f4b4b0d1f534478e53ac0e52e894&q=" + str;
+    let url = "https://www.food2fork.com/api/search?key=d163d5127df3dc954c85893da2da4f2e&q=" + str;
     console.log(url);
     this.httpClient.get(url)
       .subscribe( (data:any) => {
@@ -55,6 +55,7 @@ export class SearchComponent implements OnInit {
         console.log(this.response);
       });
   }
+
 
   getSession() {
     this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/session", {withCredentials:true})
