@@ -29,7 +29,9 @@ export class CreateUserComponent implements OnInit {
       //let body = this.profileForm.value;
       let body = `name=${this.profileForm.value.name}&userName=${this.profileForm.value.userName}&email=${this.profileForm.value.email}
     &pswd=${this.profileForm.value.password}`;
-      this.httpClient.post('http://localhost:8082/lesoptimates.project2.backend/newUser', body, headers)
+      console.log("body is : " + body);
+
+      this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/newUser", body, headers)
         .subscribe(success => console.log('success'),
           error => {
             console.log(error.status);

@@ -27,7 +27,7 @@ export class UpdateProfileComponent implements OnInit {
 
     const headers = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded'
       }), withCredentials: true
     };
     if (this.profileForm.valid) {
@@ -36,7 +36,7 @@ export class UpdateProfileComponent implements OnInit {
     &pswd=${this.profileForm.value.password}`;
       console.log("body is : " + body);
 
-      this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/updateUser", body, headers)
+      this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/updateUser", body, headers)
         .subscribe(success => console.log('success'),
           error => {
             console.log(error.status);

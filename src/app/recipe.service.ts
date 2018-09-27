@@ -6,20 +6,17 @@ import { SessionService } from './session.service';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { RecipeUsers } from '../models/RecipeUsers';
-import { ErrorService } from './error.service';
-import { catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
 
-  constructor(
-    private httpClient: HttpClient,
-    private sessionService: SessionService,
-    private errorService: ErrorService
-  ) {}
+  
+  constructor(private httpClient: HttpClient,
+  private sessionService: SessionService) { }
   chefsUrl:string = "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/getChefs";
-  recipeUsersUrl:string = "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/recipes/users";
+  recipeUsersUrl:string = "api/recipeChefs/";
   recipe: Recipe;
 
   response:any;
@@ -36,10 +33,7 @@ export class RecipeService {
   getChefRecipes(chefId:number): Observable<RecipeUsers[]> {
     //uncomment to match endpoint pattern of real server
     //return this.httpClient.get<RecipeUsers[]>(this.recipeUsersUrl + chefId); 
-    return this.httpClient.get<RecipeUsers[]>(this.recipeUsersUrl + '/' + +chefId)
-    .pipe(
-      catchError(this.errorService.handleError)
-    );
+    return this.httpClient.get<RecipeUsers[]>(this.recipeUsersUrl);
   }
   showUserRecipes(){
 

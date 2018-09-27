@@ -27,7 +27,7 @@ export class SessionService {
   }
 
   getSessionPromise():Promise<string> {
-    return this.httpClient.get<string>("http://localhost:8082/lesoptimates.project2.backend/session", {withCredentials:true}).toPromise();
+    return this.httpClient.get<string>("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true}).toPromise();
   }
 
   get isLoggedIn() {
@@ -43,9 +43,10 @@ export class SessionService {
       }), withCredentials:true
     };   
     let body = `userName=${username}&pswd=${password}`;
-    this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/login",body, headers)
-    .subscribe( (data: any) => {
-      if(data) {
+
+    this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/login",body,  headers )
+    .subscribe( (data:any) => {
+      if(data){
         this.router.navigateByUrl('/home');
         this.isValidSession(true);
       }
@@ -54,8 +55,28 @@ export class SessionService {
   }
 
   logout(){
-    this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/logout",{withCredentials: true}).subscribe();
+    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
     this.isValidSession(false);
+  }
+
+  getUserRecipes(userId):any{
+    let response;
+      this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+userId)
+      .subscribe( (data:any) => {
+    
+          for (var i=0; i<data.length; i++){
+            data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
+    
+          }
+    
+          
+          response = data;
+          console.log(response);
+          console.log(typeof(response));
+          
+        });
+
+        return response;
   }
 
 }

@@ -41,6 +41,11 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sessionService.getSessionPromise().then((data:any) => {
+      if(data){
+        this.sessionService.isValidSession(true);
+      }
+        })
     this.isLoggedIn = this.sessionService.isLoggedIn;
     this.recipeService.getChefs().subscribe( (data:User[]) => {
       this.chefs = data;
