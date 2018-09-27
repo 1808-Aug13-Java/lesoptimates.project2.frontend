@@ -36,7 +36,7 @@ import { LogoutComponent } from './logout/logout.component';
     TodaysSpecialsComponent,
     RecommendedComponent,
     RecommendedDetailsComponent,
-    LogoutComponent
+    LogoutComponent,
   ],
   providers: [
     FormsModule,

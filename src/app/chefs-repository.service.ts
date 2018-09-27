@@ -1,6 +1,6 @@
-import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
+// import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
 
-export class ChefsRepositoryService implements InMemoryDbService {
+export class ChefsRepositoryService {
   createDb() {
     const chefs = [
       {"id": 10, "name": "billy"},
