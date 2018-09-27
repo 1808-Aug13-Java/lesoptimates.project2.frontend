@@ -18,6 +18,7 @@ export class UpdateProfileComponent implements OnInit {
   userUpdated = false;
   userUpdatedFailed = false;
   isLoggedIn: Observable<boolean>;
+  url: "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/"
 
 
   onSubmit() {
@@ -36,7 +37,7 @@ export class UpdateProfileComponent implements OnInit {
     &pswd=${this.profileForm.value.password}`;
       console.log("body is : " + body);
 
-      this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/updateUser", body, headers)
+      this.httpClient.post(this.url +"updateUser", body, headers)
         .subscribe(success => console.log('success'),
           error => {
             console.log(error.status);

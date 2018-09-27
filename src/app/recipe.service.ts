@@ -18,7 +18,7 @@ export class RecipeService {
   chefsUrl:string = "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/getChefs";
   recipeUsersUrl:string = "api/recipeChefs/";
   recipe: Recipe;
-
+  url: "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/";
   response:any;
 
   showRecipe() {
@@ -37,7 +37,7 @@ export class RecipeService {
   }
   showUserRecipes(){
 
-    this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/recipes")
+    this.httpClient.get( this.url + "recipes")
     .subscribe( (data:any) => {
   
       for (var i=0; i<data.length; i++){
@@ -54,7 +54,7 @@ export class RecipeService {
 
 
   saveRecipe(userId, json){ 
-    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes")
+    this.httpClient.get(this.url + "recipes")
       .subscribe( (data:any) => {
         for (var i=0; i<data.length; i++){
           data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
@@ -63,29 +63,6 @@ export class RecipeService {
         this.response = data;
       });
   }
-  // saveRecipe(json){ 
-  //   const headers = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type':  'application/x-www-form-urlencoded'
-  //     })
-  //   };
-  //   let body = `userId=${userId}&JSON=${JSON.stringify(json)}`;
-
-  //   this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/recipes/save",body,  headers )
-  //   .subscribe( (data:any) => {
-  //     this.response = data.recipes;
-  //   });
-
-  //   console.log(this.recipe);
-  //   let body = `userId=11&JSON=${JSON.stringify(JSON)}`;
-
-  //   this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/recipes/save",body,  headers )
-  //     .subscribe( (data:any) => {
-  //       this.response = data.recipes;
-  //       console.log(this.response);
-  //     });
-  //   this.showRecipe();
-  // }
 
   deleteRecipe(recipeId){ 
     const headers = {
