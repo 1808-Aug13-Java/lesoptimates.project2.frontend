@@ -46,12 +46,12 @@ export class SearchComponent implements OnInit {
 
   showRecipes(str: string) {
     console.log("showrecipescalled: " + str)
-    let url = "https://www.food2fork.com/api/search?key=1f15f4b4b0d1f534478e53ac0e52e894&q=" + str;
+    let url = "https://www.food2fork.com/api/search?key=45358a7237f171a02820c89513e83c2a&q=" + str;
     console.log(url);
     this.httpClient.get(url)
       .subscribe( (data:any) => {
+        console.log(data);
         this.response = data.recipes;
-        console.log(this.response);
       });
   }
 
