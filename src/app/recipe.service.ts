@@ -14,7 +14,7 @@ export class RecipeService {
 
   constructor(private httpClient: HttpClient,
   private sessionService: SessionService) { }
-  chefsUrl:string = "api/chefs/";
+  chefsUrl:string = "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/getChefs";
   recipeUsersUrl:string = "api/recipeChefs/";
   recipe: Recipe;
 

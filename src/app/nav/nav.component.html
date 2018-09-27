@@ -22,9 +22,8 @@
           aria-haspopup="true" aria-expanded="false">
           Chef Faves
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Earl Harlen</a>
-          <a class="dropdown-item" href="#">Tamika Flynn</a>
+        <div class="dropdown-menu" *ngFor="let c of chefs" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/recommendedDetails/{{c.userId}}">{{c.name}}</a>
         </div>
       </li>
     </ul>

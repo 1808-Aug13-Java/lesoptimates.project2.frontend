@@ -33,25 +33,19 @@ export class SessionService {
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
-
   isValidSession(bool:boolean){
     this.loggedIn.next(bool);
   }
-
   login(username, password){
-
-    
     const headers = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded',
       }), withCredentials:true
     };   
-
     let body = `userName=${username}&pswd=${password}`;
-
-    this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/login",body,  headers )
-    .subscribe( (data:any) => {
-      if(data){
+    this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/login",body, headers)
+    .subscribe( (data: any) => {
+      if(data) {
         this.router.navigateByUrl('/home');
         this.isValidSession(true);
       }
@@ -60,7 +54,7 @@ export class SessionService {
   }
 
   logout(){
-    this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/logout",{withCredentials:true}).subscribe();
+    this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/logout",{withCredentials: true}).subscribe();
     this.isValidSession(false);
   }
 

@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SessionService } from '../session.service';
 import { Observable } from 'rxjs';
-
+import { RecipeService } from '../recipe.service';
+import { User } from '../../models/User';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -14,20 +15,24 @@ export class NavComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private sessionService: SessionService) { }
+    private router: Router, private sessionService: SessionService, private recipeService: RecipeService) {
+  } 
 
 
   // didSearch = false;
   recipeSearch: string;
   getSearchVal(value: string) { this.recipeSearch = value; }
   response:any;
+  chefs: User[];
   showRecipe() {
     console.log(this.recipeSearch);
+    this.recipeSearch = this.recipeSearch ? this.recipeSearch : ''; //if recipeSearch is empty, set to empty string
+    console.log('recipeSearch: ' + this.recipeSearch); 
     this.router.navigate(['/search'], { queryParams: { str:this.recipeSearch } });
 
-    // let url = "https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d";
+    // let url = 'https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d';
     // //&q=chicken%20breast question string format
-    // this.httpClient.get("https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d")
+    // this.httpClient.get('https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d')
     //   .subscribe( (data:any) => {
     //     this.response = data.recipes;
     //     console.log(this.response);
@@ -36,6 +41,11 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = this.sessionService.isLoggedIn;
+    this.recipeService.getChefs().subscribe( (data:any) => {
+      this.chefs = data;
+      console.log(this.chefs);
+    });
+
   }
 
 }

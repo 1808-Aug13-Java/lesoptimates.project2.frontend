@@ -39,14 +39,14 @@ export class UpdateProfileComponent implements OnInit {
       this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/updateUser", body, headers)
         .subscribe(success => console.log('success'),
           error => {
-            console.log(error.status);;
+            console.log(error.status);
             if (error.status == 200) {
               this.userUpdated = true;
             } else {
               this.userUpdatedFailed = true;
             }
           });
-    }else{
+    } else {
       console.log("invalid form. can not submit")
     }
   }

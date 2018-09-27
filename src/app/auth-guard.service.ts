@@ -5,12 +5,11 @@ import { SessionService } from './session.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate{
-  
-  session:any;
-
-  constructor(private sessionService: SessionService, private router: Router) {}
-
+export class AuthGuardService implements CanActivate { 
+  session: any;
+  constructor(
+    private sessionService: SessionService, 
+    private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.sessionService.getCurrentUserId == null) {
       return true;
@@ -20,3 +19,4 @@ export class AuthGuardService implements CanActivate{
     }
   }
 }
+

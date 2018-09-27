@@ -11,16 +11,11 @@ export class LoginComponent implements OnInit {
   @Input() password: string;
 
   constructor(private sessionService: SessionService) {  }
-  
-  
   ngOnInit() {}
-
   login(){
     this.sessionService.login(this.username,this.password);
   }
-
   logout(){
     this.sessionService.logout();
   }
-
 }
