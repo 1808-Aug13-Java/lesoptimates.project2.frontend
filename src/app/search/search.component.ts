@@ -63,7 +63,7 @@ export class SearchComponent implements OnInit {
   }
   showRecipe() {
     let response: any;
-    const recipes, savedRecipes: any[];
+    let recipes, savedRecipes: any[];
     const currentUser: string = this.sessionService.getCurrentUserId();
     if ( currentUser) {
       savedRecipes = this.recipeService.returnUserRecipes(currentUser);
