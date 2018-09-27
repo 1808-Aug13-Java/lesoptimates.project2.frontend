@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -43,8 +42,7 @@ import { RecommendedDetailsComponent } from './recommended-details/recommended-d
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
-    HttpModule
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
