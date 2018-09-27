@@ -15,6 +15,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { TodaysSpecialsComponent } from './todays-specials/todays-specials.component';
 import { RecommendedComponent } from './recommended/recommended.component';
 import { RecommendedDetailsComponent } from './recommended-details/recommended-details.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -30,7 +31,8 @@ import { RecommendedDetailsComponent } from './recommended-details/recommended-d
     UpdateProfileComponent,
     TodaysSpecialsComponent,
     RecommendedComponent,
-    RecommendedDetailsComponent
+    RecommendedDetailsComponent,
+    ErrorComponent
   ],
   providers: [
     FormsModule,

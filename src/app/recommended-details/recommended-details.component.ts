@@ -13,8 +13,9 @@ export class RecommendedDetailsComponent implements OnInit {
   recipeChefs: Recipe[] = [];
   res:any;
   showChefRecipes() {
-    this.recipeService.getChefRecipes(1)
+    this.recipeService.getChefRecipes(5)
       .subscribe( (data: RecipeUsers[]) => {
+        console.log(data);
         for (var i=0; i<data.length; i++){
           this.res = JSON.parse(data[i].recipeJSON);
           this.recipeChefs.push(this.res);

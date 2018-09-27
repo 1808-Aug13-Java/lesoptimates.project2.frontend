@@ -9,7 +9,7 @@ import { RecommendedDetailsComponent } from './recommended-details/recommended-d
 import { AuthGuardService } from './auth-guard.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
-
+import { ErrorComponent } from './error/error.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -19,10 +19,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'updateprofile', component: UpdateProfileComponent},
   { path: 'recommended/:id', component: RecommendedDetailsComponent },
-  { path: 'recommended', component: RecommendedComponent },
   { path: 'savedrecipes', component: SavedRecipesComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full'}
-
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '**', component: ErrorComponent }
 ];
 @NgModule({
   imports: [
