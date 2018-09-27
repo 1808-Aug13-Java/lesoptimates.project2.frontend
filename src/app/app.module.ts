@@ -3,8 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ChefsRepositoryService } from './chefs-repository.service';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { AppRoutingModule } from './/app-routing.module';
@@ -40,9 +38,6 @@ import { RecommendedDetailsComponent } from './recommended-details/recommended-d
     ReactiveFormsModule,
     HttpClientModule],
   imports: [
-    HttpClientInMemoryWebApiModule.forRoot(
-      ChefsRepositoryService, { dataEncapsulation: false }
-    ),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
