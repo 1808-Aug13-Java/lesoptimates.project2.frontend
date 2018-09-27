@@ -30,13 +30,12 @@ import { RecipeService } from '../recipe.service';
     ]),
   ],
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   recipe: Recipe;
   userId: string;
   //key1: d163d5127df3dc954c85893da2da4f2e 
   //key2: 1f15f4b4b0d1f534478e53ac0e52e894
   //key3: 2ae4418069c000dc8c72aebc231c2e2d
-
   constructor(private httpClient: HttpClient, private route: ActivatedRoute,
     private router: Router, private sessionService: SessionService,
     private recipeService: RecipeService) { }
@@ -64,10 +63,6 @@ export class SearchComponent {
           console.log(this.userId);
         }
       });
-  // response:any;
-  // isSaved = false;
-  // toggle() {
-  //   this.isSaved = !this.isSaved;
   }
   
   showRecipe() {
@@ -112,7 +107,6 @@ export class SearchComponent {
 
     this.showRecipe();
   }
-  
 
   ngOnInit() {
     this.search = this.route
