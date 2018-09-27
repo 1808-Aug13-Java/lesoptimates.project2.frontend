@@ -7,7 +7,6 @@ import { SessionService } from '../session.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   @Input() username: string;
   @Input() password: string;
 
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
   
   
   ngOnInit() {}
-
 
   login(){
     this.sessionService.login(this.username,this.password);

@@ -39,5 +39,5 @@ testem.log
 Thumbs.db
 
 # vim/unix
-.swp
-.sh
+*.swp
+*.sh
