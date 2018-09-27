@@ -37,10 +37,9 @@ export class CreateUserComponent implements OnInit {
     &pswd=${this.profileForm.value.password}`;
       console.log("body is : " + body);
 
-      this.httpClient.post("http://localhost:8082/lesoptimates.project2.backend/newUser", body, headers)
-        .subscribe(success => console.log('success'),
+      this.httpClient.post("http://localhost:8080/lesoptimates.project2.backend/newUser", body, headers).subscribe(success => console.log('success'),
           error => {
-            console.log(error.status);;
+            console.log(error.status);
             if (error.status == 200) {
               this.userCreated = true;
             } else {

@@ -18,7 +18,7 @@ export class TodaysSpecialsComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   showRecipes(str: string) {
-    let url = "https://www.food2fork.com/api/search?key=2ae4418069c000dc8c72aebc231c2e2d&q=" + str;
+    let url = "https://www.food2fork.com/api/search?key=1f15f4b4b0d1f534478e53ac0e52e894&q=" + str;
     console.log(url);
     this.httpClient.get(url)
       .subscribe( (data:any) => {
