@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../session.service';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
@@ -18,6 +19,7 @@ export class UpdateProfileComponent implements OnInit {
   userUpdated = false;
   userUpdatedFailed = false;
   isLoggedIn: Observable<boolean>;
+  userId:string;
 
 
   onSubmit() {
@@ -32,7 +34,7 @@ export class UpdateProfileComponent implements OnInit {
     };
     if (this.profileForm.valid) {
       //let body = this.profileForm.value;
-      let body = `name=${this.profileForm.value.name}&userName=${this.profileForm.value.userName}&email=${this.profileForm.value.email}
+      let body = `id=${this.userId}name=${this.profileForm.value.name}&userName=${this.profileForm.value.userName}&email=${this.profileForm.value.email}
     &pswd=${this.profileForm.value.password}`;
       console.log("body is : " + body);
 
@@ -68,6 +70,14 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = this.sessionService.isLoggedIn;
+
+    this.sessionService.getSessionPromise().then((data:any) => {
+      if(data!=null){
+        this.userId = data.userId;
+        console.log(this.userId);
+      }
+    });
+
   }
 
 }

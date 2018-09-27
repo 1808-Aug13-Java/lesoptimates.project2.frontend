@@ -6,7 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
 import { RecommendedComponent } from './recommended/recommended.component';
 import { RecommendedDetailsComponent } from './recommended-details/recommended-details.component';
-import { AuthGuardService } from "./auth-guard.service";
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 

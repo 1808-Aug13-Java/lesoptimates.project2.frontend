@@ -17,7 +17,7 @@ export class SessionService {
 
   getCurrentUserId():string {
     
-    this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/session", {withCredentials:true})
+    this.httpClient.get("http://localhost:8082/lesoptimates.project2.backend/session", {withCredentials:true})
       .subscribe( (data:any) => {
         if(data!=null){
           this.userId = data.userId;
