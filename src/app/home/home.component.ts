@@ -9,7 +9,7 @@ import { SearchComponent } from '../search/search.component';
 export class HomeComponent implements OnInit {
 
   constructor() { }
-  results:any[] = SearchComponent["results"];
+  results:any[] = SearchComponent['results'];
   ngOnInit() {
   }
 
