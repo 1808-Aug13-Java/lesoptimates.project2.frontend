@@ -62,4 +62,23 @@ export class SessionService {
     this.isValidSession(false);
   }
 
+  getUserRecipes(userId):any{
+    let response;
+      this.httpClient.get("http://localhost:8080/lesoptimates.project2.backend/recipes/users/"+userId)
+      .subscribe( (data:any) => {
+    
+          for (var i=0; i<data.length; i++){
+            data[i].recipeJSON = JSON.parse(data[i].recipeJSON);
+    
+          }
+    
+          
+          response = data;
+          
+        });
+
+        return response;
+  }
+
 }
+

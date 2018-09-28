@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -14,7 +15,6 @@ export class SavedRecipesComponent implements OnInit {
   private sessionService: SessionService) { }
   response:any;
   userId:string;
-  url: "http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/";
 
   ngOnInit() {
 
@@ -23,7 +23,7 @@ export class SavedRecipesComponent implements OnInit {
         this.userId = data.userId;
         console.log(this.userId);
 
-        this.httpClient.get(this.url + this.userId)
+        this.httpClient.get("http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/recipes/users/"+this.userId)
         .subscribe( (data:any) => {
     
           for (var i=0; i<data.length; i++){
@@ -50,7 +50,7 @@ export class SavedRecipesComponent implements OnInit {
 
     let body = `recipeId=${recipeId}`;
 
-    this.httpClient.post(this.url + "delete",body,  headers )
+    this.httpClient.post("http://ec2-18-232-121-144.compute-1.amazonaws.com:8080/lesoptimates.project2.backend/recipes/delete",body,  headers )
     .subscribe( (data:any) => {
       this.response = data.recipes;
       console.log(this.response);
